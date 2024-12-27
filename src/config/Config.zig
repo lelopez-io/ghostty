@@ -922,7 +922,10 @@ keybind: Keybinds = .{},
 /// left padding to 2 and the right padding to 4. If you want to set both
 /// paddings to the same value, you can use a single value. For example,
 /// `window-padding-x = 2` will set both paddings to 2.
-@"window-padding-x": WindowPadding = .{ .top_left = 2, .bottom_right = 2 },
+@"window-padding-x": WindowPadding = switch (builtin.os.tag) {
+    .macos => .{ .top_left = 8, .bottom_right = 8 },
+    else => .{ .top_left = 2, .bottom_right = 2 },
+},
 
 /// Vertical window padding. This applies padding between the terminal cells and
 /// the top and bottom window borders. The value is in points, meaning that it
