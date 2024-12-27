@@ -922,6 +922,10 @@ keybind: Keybinds = .{},
 /// left padding to 2 and the right padding to 4. If you want to set both
 /// paddings to the same value, you can use a single value. For example,
 /// `window-padding-x = 2` will set both paddings to 2.
+///
+/// On macOS, the default value is 8 points to align the terminal content with
+/// the window traffic lights in the title bar. For other platforms, the default
+/// is 2 points.
 @"window-padding-x": WindowPadding = switch (builtin.os.tag) {
     .macos => .{ .top_left = 8, .bottom_right = 8 },
     else => .{ .top_left = 2, .bottom_right = 2 },
